@@ -1,0 +1,10 @@
+%h2="Error while testing #{@code_response[:data][1]}"
+%p.meta
+  %a{:href=>"#{Citadel::Settings[:github_url]}/commit/#{@code_response[:data][1]}"}="View on Github"
+- if @code_response[:already]
+  %h3 Already tested this commit
+- else
+  #post
+    %pre
+      %code
+        ="#{@code_response[:data][0]}"

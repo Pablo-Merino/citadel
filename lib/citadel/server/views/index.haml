@@ -1,0 +1,8 @@
+%ul.posts
+  - @inspections.each do |inspection|
+    %li
+      %b="[#{inspection[:result] ? "SUCCESS" : "FAILURE"}]"
+      %span="#{inspection[:started]}"
+      ="&raquo;"
+      %a{:href=>"/#{inspection[:sha]}"}="#{inspection[:sha]}"
+      

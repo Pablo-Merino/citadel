@@ -1,0 +1,25 @@
+!!!  
+%html  
+  %head  
+    %title Citadel
+    %link{:rel=>"stylesheet", :href=>"main.css"}
+
+  %body
+    .container
+      .site
+        .header
+          %h1.title
+            %a{:href=>'/'} Citadel
+          %a.extra{:href=>'/all'} all the builds
+          %a.extra{:href=>'/pull'} force pull
+
+        = yield
+
+        .footer
+          .contact
+            %p
+              %a{:href=>'http://pmerino.me'} By Pablo Merino
+            %p
+              %a{:href=>'https://github.com/mojombo/jekyll'} Thanks to Jekyll for the template
+
+              
