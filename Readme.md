@@ -30,7 +30,7 @@ Citadel::Settings.configure do
 end
 ```
 
-Then just run `./bin/citadel <path of the config file>`. This will launch the Citadel core and a Sinatra web app, acessible on `0.0.0.0:8080`.
+Then `bundle install` and run `./bin/citadel <path of the config file>`. This will launch the Citadel core and a Sinatra web app, acessible on `0.0.0.0:8080`.
 
 Author
 ======
