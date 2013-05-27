@@ -11,5 +11,8 @@ Gem::Specification.new name, Citadel::VERSION do |s|
 	s.license = "MIT"
 	s.add_dependency('active_support', ['~> 3.0.0'])
 	s.add_dependency("colored", ["~> 1.2"])  
+  s.add_dependency("colored", ["~> 1.2"])  
+  s.add_dependency("sinatra", ["~> 1.4.2"])  
+  s.add_dependency("sequel", ["~> 3.47.0"])  
 
 end
