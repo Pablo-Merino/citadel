@@ -9,10 +9,12 @@ Gem::Specification.new name, Citadel::VERSION do |s|
 	s.homepage = "http://github.com/pablo-merino/#{name}"
 	s.files = `git ls-files`.split("\n")
 	s.license = "MIT"
+	s.executables   = `ls bin/*`.split("\n").map{ |f| File.basename(f) }
 	s.add_dependency('active_support', ['~> 3.0.0'])
 	s.add_dependency("colored", ["~> 1.2"])  
   s.add_dependency("colored", ["~> 1.2"])  
   s.add_dependency("sinatra", ["~> 1.4.2"])  
   s.add_dependency("sequel", ["~> 3.47.0"])  
-
+  s.add_dependency("i18n", ["~> 0.6.5"])  
+  s.add_dependency("sqlite3", ["~> 1.3.8"])  
 end

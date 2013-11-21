@@ -1,7 +1,5 @@
 # encoding: utf-8
-require 'active_support/core_ext/string'
-
-
+require 'active_support/all'
 module Citadel; end
 
 File.tap do |f|

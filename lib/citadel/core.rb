@@ -5,12 +5,28 @@ module Citadel
 		attr_accessor :database
 
     def initialize(args)
-      load args[0]
+      if !args[0].nil?
+        load args[0] 
+      else
+        raise ArgumentError, "config file is nil"
+      end
+      
+      if !Dir.exist?(File.expand_path(Settings[:working_dir]))
+        Dir.mkdir(File.expand_path(Settings[:working_dir]))
+      end      
+      
       @working_dir = File.expand_path(Settings[:working_dir])
 
       @database = Datastore::Connection.new
+      if !Dir.exist?("#{File.expand_path(Settings[:working_dir])}/code/.git")
+        open_pipe("cd #{File.expand_path(Settings[:working_dir])} && git clone #{Settings[:clone_url]} ./code") do |pipe, pid|
+          Process.wait(pid)
+          Server.start(self)
+        end
+      else
+        Server.start(self)
+      end
       
-      Server.start(self)
     end
 
     def run_spec
@@ -35,7 +51,7 @@ module Citadel
     end
 
     def pull_git_repo(start_tests)
-      open_pipe("cd #{@working_dir}/code && git fetch origin && git reset --hard origin/#{Settings[:branch]}") do |pipe, pid|
+      open_pipe("git --git-dir=#{@working_dir}/code fetch origin && git --git-dir=#{@working_dir}/code reset --hard origin/#{Settings[:branch]}") do |pipe, pid|
         Process.wait(pid)
       end
       run_spec if start_tests and $?.success?

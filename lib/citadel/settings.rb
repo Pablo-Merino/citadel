@@ -35,6 +35,10 @@ module Citadel
       settings[:github_url] = url
     end
     
+    def clone_url(url="")
+      settings[:clone_url] = url
+    end
+    
     def after_testing(&block)
       settings[:after_testing] = block
     end

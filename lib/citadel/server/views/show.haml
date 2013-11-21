@@ -3,8 +3,7 @@
 %p.meta="Tested on: #{@inspection[:started]}"
 %p.meta
   %a{:href=>"#{Citadel::Settings[:github_url]}/commit/#{@inspection[:sha]}"}="View on Github"
-- unless @inspection[:result]
-  #post
-    %pre
-      %code
-        ="#{@inspection[:error_data]}"
+#post
+  %pre
+    %code
+      ="#{@inspection[:error_data]}"
